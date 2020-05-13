@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.springMybatis.dao.UserDao" >
+ 			<!-- 查询用户信息 -->
+		<select id="findAll" parameterType="String" resultType="com.springMybatis.po.User">
+			select * from user
+		</select>
+		<select id="finduser" parameterType="String" resultType="com.springMybatis.po.User">
+		<!-- 模糊查询用户 -->
+			select * from user where name like concat('%',#{name},'%')
+		</select>
+		<select id="findone" parameterType="int" resultType="com.springMybatis.po.User">
+		<!--查询指定用户用于修改用户信息 -->
+			select * from user where num=#{num}
+		</select>
+		<update id="Updateuser" parameterType="User">
+		<!--修改用户信息 -->
+			update User set id=#{id},name=#{name},password=#{password} where num=#{num}
+		</update>
+		<delete id="Deleteuser" parameterType="int">
+		<!--删除用户信息 -->
+			delete from User where num=#{num}
+		</delete>
+		<insert id="Insertuser" parameterType="User">
+		<!--添加新的用户信息 -->
+			insert into User (id,name,password) values(#{id},#{name},#{password});
+		</insert>
+ </mapper>

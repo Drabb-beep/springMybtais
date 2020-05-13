@@ -1,0 +1,1 @@
+Spring+Mybtais整合实现单表CURD
